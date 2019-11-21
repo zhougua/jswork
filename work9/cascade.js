@@ -75,21 +75,21 @@ let classes = [
 ];
 function createOption (obj, data){
     for (var i in data){
-        var op = new Option(data[i], i);
-        obj.options.add(op);
+        var op = new Option(data[i], i);//创建下拉菜单
+        obj.options.add(op);//添加选项到下拉菜单中
     }
 }
-var collegeSelect=document.getElementById('collegeSelect');
+var collegeSelect=document.getElementById('collegeSelect');//获取学院元素
 createOption(collegeSelect,colleges);
 
-var majorSelect=document.getElementById('majorSelect');
-collegeSelect.onchange=function(){
-    majorSelect.options.length=0;
+var majorSelect=document.getElementById('majorSelect');//系
+collegeSelect.onchange=function(){// 为系下拉菜单添加事件
+    majorSelect.options.length=0;//清空major中的option值
     createOption(majorSelect, majors[collegeSelect.value]);
 }
-var classSelect=document.getElementById('classSelect');
-majorSelect.onchange=function(){
-    classSelect.options.length=0;
+var classSelect=document.getElementById('classSelect');//班
+majorSelect.onchange=function(){// 为班下拉菜单添加事件
+    classSelect.options.length=0;//清空class中的option值
     createOption(classSelect, classes[collegeSelect.value][majorSelect.value])
 }
 collegeSelect.onchange=function(){
